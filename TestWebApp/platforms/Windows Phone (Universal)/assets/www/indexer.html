@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MakeMeBlue</title>
+
+    <!-- MakeMeBlue references -->
+    <script src="scripts/jquery-1.9.0.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/game.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4">
+            <table>
+                <tr>
+                    <td>
+                        <div id="b1" class="box"></div>
+                    </td>
+                    <td>
+                        <div id="b2" class="box"></div>
+                    </td>
+                    <td>
+                        <div id="b3" class="box"></div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div id="b4" class="box"></div>
+                    </td>
+                    <td>
+                        <div id="b5" class="box"></div>
+                    </td>
+                    <td>
+                        <div id="b6" class="box"></div>
+                    </td>
+                    <!--<td>
+                        <div style="height:100px;width:10px;"></div>
+                    </td>-->
+
+                </tr>
+                <tr>
+                    <td>
+                        <div id="b7" class="box"></div>
+                    </td>
+                    <td>
+                        <div id="b8" class="box"></div>
+                    </td>
+                    <td>
+                        <div id="b9" class="box"></div>
+                    </td>
+                    <!--<td>
+                        <div style="height:100px;width:10px;"></div>
+                    </td>-->
+
+                </tr>
+                <tr>
+                    <td>
+                        <div style="height:100px;width:100px;">Select</div>
+                    </td>
+                    <td>
+                        <div id="selectColor" style="height:100px;width:.001px;">
+                            <svg>
+                                <circle id="selectColorCircle" cx="50" cy="50" r="20"></circle>
+                            </svg>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="background-color:cornsilk;" id="scoreDiv"></div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <!--<script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>-->
+
+    <script src="scripts/index.js"></script>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            resetColor();
+            var score = 0;
+            $('#scoreDiv').text('score = '+score);
+            var color = ['red', 'blue', 'green', 'black', 'aqua', 'cyan', 'brown', 'pink', 'grey'];
+            color = shuffle(color);
+
+            $('#selectColor').css('background-color', color[5]);
+            $('#selectColorCircle').attr('fill',color[5]);
+            //$('.box').text('Make me blue');
+
+
+            //ONCLICK OF TABLE DATA EVENT
+            $('.box').click(function () {
+
+
+                //$('.box').text('Make me blue');
+                //$(this).css('background-color', 'blue');
+                //$(this).text('I am blue...');
+                var c=$(this).css('background-color');
+                var d = $('#selectColor').css('background-color');
+                if (c===d) {
+                    score++;
+                    $('#scoreDiv').empty();
+                    $('#scoreDiv').text('score = ' + score);
+                    resetColor();
+                    color = shuffle(color);
+                    $('#selectColor').css('background-color', color[5]);
+                    $('#selectColorCircle').attr('fill', color[5]);
+                } else {
+                    resetColor();
+                }
+            });
+        });
+
+        //FUNCTION TO SHUFFLE ARRAY ELEMENTS
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
+        function resetColor()
+        {
+            var color = new Array();
+            var col = ['red', 'blue', 'green', 'black', 'aqua', 'violet', 'brown', 'pink', 'grey'];
+            var colorShuffled = shuffle(col);
+            var boxes = $('.box');
+            var ids = new Array();
+
+            boxes.map(function (i, e) {
+                ids.push($(this).attr('id'));
+            });
+            $.each(ids,function (i, e) {
+                var element = $('#'+e);
+                var colorSelected = colorShuffled[i];
+                element.css('background-color', colorSelected);
+            });
+
+            return $('.box').css('background-color');
+        }
+    </script>
+</body>
+</html>

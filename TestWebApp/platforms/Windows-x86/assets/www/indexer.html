@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MakeMeBlue</title>
+
+    <!-- MakeMeBlue references -->
+    <script src="scripts/jquery-1.9.0.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/game.css" rel="stylesheet" />
+
+ 
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <div id="b1" class="box"></div>
+            </td>
+            <td>
+                <div id="b2" class="box"></div>
+            </td>
+            <td>
+                <div id="b3" class="box"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="b4" class="box"></div>
+            </td>
+            <td>
+                <div id="b5" class="box"></div>
+            </td>
+            <td>
+                <div id="b6" class="box"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="b7" class="box"></div>
+            </td>
+            <td>
+                <div id="b8" class="box"></div>
+            </td>
+            <td>
+                <div id="b9" class="box"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="scoreCard" style="height:100px;width:100px;">Chances</div>
+                <br />
+                <div class="scoreCard" id="lifeDiv" style="height:100px;width:100px;">
+                    
+                </div>
+                <br />
+                <div class="scoreCard" style="height:100px;width:100px;"></div>
+                <br />
+            </td>
+            <td>
+                <div class="scoreCard">
+                    <table id="selectTable">
+                        <tr>
+                            <td class="selectBox"></td>
+                            <td class="selectBox"></td>
+                            <td class="selectBox"></td>
+                        </tr>
+                        <tr>
+                            <td class="selectBox"></td>
+                            <td >
+                                <div class="selectBox" id="selectColor">
+                                </div>
+                            </td>
+                            <td class="selectBox"></td>
+                        </tr>
+                        <tr>
+                            <td class="selectBox"></td>
+                            <td class="selectBox"></td>
+                            <td class="selectBox"></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="scoreCard" style="background-color:cornsilk;" id="scoreDiv"></div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <!--<script src="js"></script>-->
+    <script src="scripts/platformOverrides.js"></script>
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/game.js"></script>
+</body>
+</html>

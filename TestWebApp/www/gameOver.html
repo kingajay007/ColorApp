@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="scripts/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+    <h1 style="vertical-align:central;align-self:center" id="totalScore"></h1>
+    <br />
+    <h2 style="vertical-align:central;align-self:center">Game Over</h2>
+    <br />
+    <h3 style="vertical-align:central;align-self:center"> <a href="indexer.html">Click to Try again</a> </h3>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //var str = this.URL;
+            //var arr = str.split('?',2);
+            //var qString = new String(arr[1]);
+            //var scoreString = qString.split('=',2);
+            var score = GetParameterValues('score');
+            $('#totalScore').text('Score : '+scoreString[1]);
+        });
+
+        function GetParameterValues(param) {
+            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+    </script>
+</body>
+</html>

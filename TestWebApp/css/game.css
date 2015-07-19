@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.box {
+    height:100px;
+    width:100px;
+    border-color:brown;
+    border-width:5px;
+    background-color:red
+}
