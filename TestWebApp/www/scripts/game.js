@@ -2,10 +2,21 @@
     initBox();
     initFooter();
     initLife();
+
+    document.addEventListener('backbutton', function () {
+        if (confirm('Are u sure you want to exit ?')) {
+            appExit();
+        } 
+    })
     var score = 0;
     var life = 2;
-    $('#scoreDiv').text('score = ' + score);
-    var color = ['red', 'blue', 'green', 'black', 'aqua', 'cyan', 'brown', 'pink', 'grey'];
+    $('#scoreDiv').append('<label style="font-size:36px">Score : ' + score + '</label>');
+    var color = ['red', 'blue', 'green', 'black', 'aqua', 'cyan',
+                 'Blue', 'CadetBlue', 'Crimson', 'brown', 'pink', 'grey',
+                 'Coral', 'Chocolate', 'CornflowerBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkOrange',
+    'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkRed', 'DarkViolet',
+    'deeppink', 'deepskyblue', 'ForestGreen', 'Fuchsia', 'Gold', 'GoldenRod',
+    'indigo', 'lightblue', 'ForestGreen', 'lavender', 'Maroon', 'Lime'];
     color = shuffle(color);
 
     $('#selectColor').css('background-color', color[5]);
@@ -60,7 +71,12 @@ function shuffle(array) {
 
 function resetColor() {
     var color = new Array();
-    var col = ['red', 'blue', 'green', 'black', 'aqua', 'violet', 'brown', 'pink', 'grey'];
+    var col = ['red', 'blue', 'green', 'black', 'aqua', 'cyan',
+                 'Blue', 'CadetBlue', 'Crimson', 'brown', 'pink', 'grey',
+                 'Coral', 'Chocolate', 'CornflowerBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkOrange',
+    'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkRed', 'DarkViolet',
+    'deeppink', 'deepskyblue', 'ForestGreen', 'Fuchsia', 'Gold', 'GoldenRod',
+    'indigo', 'lightblue', 'ForestGreen', 'lavender', 'Maroon', 'Lime'];
     var colorShuffled = shuffle(col);
     var boxes = $('.box');
     var ids = new Array();
@@ -82,9 +98,9 @@ function initBox() {
     var h = Number($(window).height());
     var b = Number($(window).width());
     if (b > h) {
-        boxDim = h / 3;
+        boxDim = h / 6;
     } else {
-        boxDim = b / 3;
+        boxDim = b / 6;
     }
 
     $('.box').height(boxDim);
@@ -96,15 +112,16 @@ function initFooter() {
     var h = Number($(window).height());
     var b = Number($(window).width());
     if (b > h) {
-        boxDim = h / 3;
+        boxDim = h / 6;
     } else {
-        boxDim = b / 3;
+        boxDim = b / 6;
     }
     $('.scoreCard').height(boxDim);
     $('.scoreCard').width(boxDim);
 
     $('.selectBox').height(boxDim / 3);
     $('.selectBox').width(boxDim / 3);
+    $('#lifeDiv').height();
     //$('#selectColor').height(boxDim / 3);
     //$('#selectColor').width(boxDim / 3);
 }
@@ -121,5 +138,7 @@ function initLife()
     }
 }
 
-
+function appExit() {
+    navigator.app.exitApp();
+}
 
