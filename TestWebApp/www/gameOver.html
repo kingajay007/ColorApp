@@ -18,7 +18,8 @@
             //var qString = new String(arr[1]);
             //var scoreString = qString.split('=',2);
             var score = GetParameterValues('score');
-            $('#totalScore').text('Score : '+scoreString[1]);
+            var score2 = window.localStorage.getItem('score');
+            $('#totalScore').text('Score : '+score2);
         });
 
         function GetParameterValues(param) {
