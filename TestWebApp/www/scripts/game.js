@@ -19,7 +19,8 @@
         if (c === d) {
             score++;
             $('#scoreDiv').empty();
-            $('#scoreDiv').text('score = ' + score);
+            var label = '<label style="font-size:36px">Score : '+score+'</label>';
+            $('#scoreDiv').append(label);
             resetColor();
             color = shuffle(color);
             $('#selectColor').css('background-color', color[5]);
@@ -29,7 +30,8 @@
                 looseLife(life);
                 life = life - 1;
             } else {
-                window.location = 'gameOver.html?score='+score;
+                window.localStorage.setItem('score',score);
+                window.location = 'gameOver.html';
             }
             resetColor();
         }
@@ -115,7 +117,7 @@ function looseLife(life)
 function initLife()
 {
     for (var i = 0; i <= 2; i++) {
-        $('#lifeDiv').append('<img id="dil' + i + '" src="images/life.png"/>');
+        $('#lifeDiv').append('<img id="dil' + i + '" height="20px" width="20px" src="images/life.png"/>');
     }
 }
 
